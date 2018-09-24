@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite.Internal;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,23 @@ namespace App16ObservColl
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            SqliteEngine.UseWinSqlite3();
+            using (SqliteConnection db = new SqliteConnection("FileName=sqliteSample.db"))
+            {
+                db.Open();
+                String tableCommand =
+                "CREATE TABLE IF NOT EXISTS Titles (Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, Text_Entry NVARCHAR(2048) NULL)";
+                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
+                try
+                {
+                    createTable.ExecuteReader();
+                }
+                catch (Exception)
+                {
+                    //Do Nothing
+                }
+            }
         }
 
         /// <summary>

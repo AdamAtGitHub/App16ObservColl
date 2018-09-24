@@ -5,10 +5,45 @@
     xmlns:local="using:App16ObservColl"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m="using:App16ObservColl.Models"
+    xmlns:vm="using:App16ObservColl.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <m:Content/>
+    </Page.DataContext>
+    <Page.Resources>
+        <vm:VM_Base_ObsColl x:Key="vm_base"/>
+    </Page.Resources>
     <Grid>
-
+        <StackPanel Background="DarkGray"
+                       Height="500" Width="340"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Margin="10,40,10,0">
+            <TextBox x:Name="boxInputTitle" 
+                     Header="Title"
+                     Text="{Binding Title, Mode=TwoWay}"                  
+                     Height="60" Width="250"/>
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton Icon="ShowResults"
+                          Content="Show Results"
+                          HorizontalAlignment="Right"
+                          Command="{Binding Source={StaticResource vm_base}, Path=Cmd_GrabEntries}"
+                          CommandParameter="{Binding Title}"
+                              Margin="160 0 0 0"/>
+                <AppBarButton Icon="Save" 
+                          Content="Save All"
+                          HorizontalAlignment="Right"
+                          Click="AppBarBtnAddText_Click"/>
+            </StackPanel>
+            <ListView x:Name="listViewOutput">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
