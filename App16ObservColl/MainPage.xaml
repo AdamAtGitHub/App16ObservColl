@@ -8,6 +8,7 @@
     xmlns:m="using:App16ObservColl.Models"
     xmlns:vm="using:App16ObservColl.ViewModels"
     mc:Ignorable="d"
+    Height="640" Width="360"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
         <m:Content/>
@@ -17,32 +18,53 @@
         <vm:VM_Base_ObsColl x:Key="VM_Base_ObsColl"/>
     </Page.Resources>
     <Grid>
-        <StackPanel Background="DarkGray"
+        <StackPanel
+                       Background="DarkGray"
                        Height="500" Width="340"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Center"
                        Margin="10,40,10,0">
+            <TextBox x:Name="boxInputCategory" 
+                     Header="Category"
+                     Text="{Binding Category, Mode=TwoWay}"                  
+                     Height="60" Width="250"/>
             <TextBox x:Name="boxInputTitle" 
                      Header="Title"
                      Text="{Binding Title, Mode=TwoWay}"                  
                      Height="60" Width="250"/>
-            <TextBlock Text="Lists" HorizontalAlignment="Center" Margin="0 0"/>
+            <TextBox x:Name="boxInputMediaType" 
+                     Header="Media Type"
+                     Text="{Binding MediaType, Mode=TwoWay}"                  
+                     Height="60" Width="250"/>
+            <TextBox x:Name="boxInputPlayTime" 
+                     Header="Play Time"
+                     Text="{Binding PlayTime, Mode=TwoWay}"                  
+                     Height="60" Width="250"/>
+           
             <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="Add"
+                <TextBlock Text="Lists"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Margin="2 2"/>
+                <AppBarButton Icon="Add" 
                           Content="Save All"
-                          HorizontalAlignment="Right"
+                          HorizontalAlignment="Right" Height="40"
                           Command="{Binding Path=Cmd_ADDModelPropsList,
                                 Source={StaticResource VM_Base_ObsColl}}"
                           CommandParameter="{Binding}"/>
                 <AppBarButton Icon="Remove"
                           Content="Remove"
-                          HorizontalAlignment="Right"
+                          HorizontalAlignment="Right" Height="40"
                           Command="{Binding Path=Cmd_RemoveModPropsList,
                             Source={StaticResource VM_Base}}"
                           CommandParameter="{Binding Title}"/>
               </StackPanel>
-            <TextBlock Text="SQLite" HorizontalAlignment="Center" Margin="0 0"/>
+            
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="SQLite" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Margin="2 2"/>
                     <AppBarButton Icon="Save" 
                           Content="Save All"
                           HorizontalAlignment="Right"
@@ -55,14 +77,45 @@
                               Margin="160 0 0 0"/>-->
             </StackPanel>
             
-        <StackPanel Orientation="Horizontal">
-                <!--<ListView x:Name="listViewOutput">
-                <ListView.ItemTemplate ItemsSource="{Binding}">
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}"/>
-                    </DataTemplate>
+        <StackPanel>
+                <ListView x:Name="listViewOutput" 
+                  DataContext="{Binding Source={StaticResource VM_Base_ObsColl}}"
+                  ItemsSource="{Binding}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="70" Width="350" Margin="1 1" Background="Gray">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition  Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding Category}"
+                                           Grid.Column="0" Grid.Row="0"
+                                           Height="30" Width="150" 
+                                           HorizontalAlignment="Left"                                        
+                                           Margin="2 2"/>
+                                <TextBlock Text="{Binding Title}"
+                                           Grid.Column="1" Grid.Row="0"
+                                           Height="30" Width="150" 
+                                           HorizontalAlignment="Left"                                        
+                                           Margin="2 2"/>
+                                <TextBlock Text="{Binding MediaType}"
+                                           Grid.Column="0" Grid.Row="1"
+                                           Height="30" Width="150" 
+                                           HorizontalAlignment="Left"                                        
+                                           Margin="2 2"/>
+                                <TextBlock Text="{Binding PlayTime}"
+                                           Grid.Column="1" Grid.Row="1"
+                                           Height="30" Width="150" 
+                                           HorizontalAlignment="Left"                                        
+                                           Margin="2 2"/>
+                            </Grid>
+                        </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
             </StackPanel>
         </StackPanel>
     </Grid>

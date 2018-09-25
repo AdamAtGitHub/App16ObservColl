@@ -13,18 +13,18 @@ namespace App16ObservColl.Models
             if (DesignMode.DesignModeEnabled)
             {
                 Category = "Human Fx";
-                Title = "DT-Title Bound";
+                Title = "Out the Door CheckList";
                 MediaType = "Speech";
                 PlayTime = "10:00 AM";
-                PlaySet = "True";//Daily Routine-Weekday 
+                //PlaySet = "True";//Daily Routine-Weekday 
             }
             else
-            { 
-            Category = "";
-            Title = "";
-            MediaType = "";
-            PlayTime = "";
-            PlaySet = "";
+            {
+                Category = "";
+                Title = "";
+                MediaType = "";
+                PlayTime = "";
+                //PlaySet = "";
             }
         }
 
@@ -128,10 +128,11 @@ namespace App16ObservColl.Models
         public string MediaUses { get; set; }
         #endregion
 
-        //public override string ToString()
-        //{
-        //    return Title + " ," + Category + " ," + MediaType;
-        //}
+        public override string ToString()
+        {
+            return Title + " ," + Category 
+                    + " ," + MediaType + " " + PlayTime;
+        }
 
     }
 }
