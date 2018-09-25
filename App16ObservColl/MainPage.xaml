@@ -13,7 +13,8 @@
         <m:Content/>
     </Page.DataContext>
     <Page.Resources>
-        <vm:VM_Base_ObsColl x:Key="vm_base"/>
+        <vm:VM_Base x:Key="VM_Base"/>
+        <vm:VM_Base_ObsColl x:Key="VM_Base_ObsColl"/>
     </Page.Resources>
     <Grid>
         <StackPanel Background="DarkGray"
@@ -25,25 +26,44 @@
                      Header="Title"
                      Text="{Binding Title, Mode=TwoWay}"                  
                      Height="60" Width="250"/>
+            <TextBlock Text="Lists" HorizontalAlignment="Center" Margin="0 0"/>
             <StackPanel Orientation="Horizontal">
-                <AppBarButton Icon="ShowResults"
+                <AppBarButton Icon="Add"
+                          Content="Save All"
+                          HorizontalAlignment="Right"
+                          Command="{Binding Path=Cmd_ADDModelPropsList,
+                                Source={StaticResource VM_Base_ObsColl}}"
+                          CommandParameter="{Binding}"/>
+                <AppBarButton Icon="Remove"
+                          Content="Remove"
+                          HorizontalAlignment="Right"
+                          Command="{Binding Path=Cmd_RemoveModPropsList,
+                            Source={StaticResource VM_Base}}"
+                          CommandParameter="{Binding Title}"/>
+              </StackPanel>
+            <TextBlock Text="SQLite" HorizontalAlignment="Center" Margin="0 0"/>
+            <StackPanel Orientation="Horizontal">
+                    <AppBarButton Icon="Save" 
+                          Content="Save All"
+                          HorizontalAlignment="Right"
+                          Click="AppBarBtnAddText_Click"/>
+                <!--<AppBarButton Icon="ShowResults"
                           Content="Show Results"
                           HorizontalAlignment="Right"
                           Command="{Binding Source={StaticResource vm_base}, Path=Cmd_GrabEntries}"
                           CommandParameter="{Binding Title}"
-                              Margin="160 0 0 0"/>
-                <AppBarButton Icon="Save" 
-                          Content="Save All"
-                          HorizontalAlignment="Right"
-                          Click="AppBarBtnAddText_Click"/>
+                              Margin="160 0 0 0"/>-->
             </StackPanel>
-            <ListView x:Name="listViewOutput">
-                <ListView.ItemTemplate>
+            
+        <StackPanel Orientation="Horizontal">
+                <!--<ListView x:Name="listViewOutput">
+                <ListView.ItemTemplate ItemsSource="{Binding}">
                     <DataTemplate>
                         <TextBlock Text="{Binding}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

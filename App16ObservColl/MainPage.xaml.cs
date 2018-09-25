@@ -57,7 +57,7 @@ namespace App16ObservColl
                 }
                 db.Close();
             }
-            listViewOutput.ItemsSource = Grab_Entries();
+           // listViewOutput.ItemsSource = Grab_Entries();
         }
 
         private List<String> Grab_Entries()

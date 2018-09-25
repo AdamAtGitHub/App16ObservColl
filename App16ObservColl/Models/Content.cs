@@ -10,7 +10,22 @@ namespace App16ObservColl.Models
 
         public Content()
         {
-
+            if (DesignMode.DesignModeEnabled)
+            {
+                Category = "Human Fx";
+                Title = "DT-Title Bound";
+                MediaType = "Speech";
+                PlayTime = "10:00 AM";
+                PlaySet = "True";//Daily Routine-Weekday 
+            }
+            else
+            { 
+            Category = "";
+            Title = "";
+            MediaType = "";
+            PlayTime = "";
+            PlaySet = "";
+            }
         }
 
         private void OnPropertyChanged(string propName)
