@@ -1,13 +1,14 @@
-﻿using System;
+﻿using App16ObservColl.Models;
+using System;
 using System.Windows.Input;
 
 namespace App16ObservColl.ViewModels.Commands
 {
     public class Cmd_RemoveModPropsList : ICommand
     {
-        public VM_Base ViewModel { get; set; }
+        public VM_Base_ObsColl ViewModel { get; set; }
 
-        public Cmd_RemoveModPropsList(VM_Base viewModel)
+        public Cmd_RemoveModPropsList(VM_Base_ObsColl viewModel)
         {
             ViewModel = viewModel;
         }
@@ -16,22 +17,22 @@ namespace App16ObservColl.ViewModels.Commands
 
         public bool CanExecute(object parameter)
         {
-            if (parameter != null)
-            {
-                var s = parameter as String;
-                s = s.Trim();
-                if (String.IsNullOrEmpty(s))
-                    return false;
+            //if (parameter != null)
+            //{
+            //    var s = parameter as String;
+            //    s = s.Trim();
+            //    if (String.IsNullOrEmpty(s))
+            //        return false;
 
-                return true;
-            }
-            return false;
+            //    return true;
+            //}
+            //return false;
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            ViewModel.RemoveModPropsList(parameter as String);
+            ViewModel.RemoveModPropsList(parameter as Content);         
         }
-
     }
 }

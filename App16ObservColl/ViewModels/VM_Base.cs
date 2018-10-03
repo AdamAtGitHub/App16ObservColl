@@ -6,12 +6,10 @@ namespace App16ObservColl.ViewModels
 {
     public class VM_Base
     {
-        public Cmd_SetExplicitProps Cmd_SetExplicitProps { get; set; }
-        public Cmd_RemoveModPropsList Cmd_RemoveModPropsList { get; set; }
+        public Cmd_SetExplicitProps Cmd_SetExplicitProps { get; set; }    
 
         public VM_Base()
-        {
-            Cmd_RemoveModPropsList = new Cmd_RemoveModPropsList(this);
+        {           
             Cmd_SetExplicitProps = new Cmd_SetExplicitProps(this);
             //if (DesignMode.DesignModeEnabled)
             //{

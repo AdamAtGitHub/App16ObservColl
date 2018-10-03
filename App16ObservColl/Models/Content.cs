@@ -20,11 +20,15 @@ namespace App16ObservColl.Models
             }
             else
             {
-                Category = "";
-                Title = "";
-                MediaType = "";
-                PlayTime = "";
-                //PlaySet = "";
+                //Category = "";
+                //Title = "";
+                //MediaType = "";
+                //PlayTime = "";
+                ////PlaySet = "";
+                Category = "Human Fx";
+                Title = "Out the Door CheckList";
+                MediaType = "Speech";
+                PlayTime = "10:00 AM";
             }
         }
 
@@ -130,8 +134,7 @@ namespace App16ObservColl.Models
 
         public override string ToString()
         {
-            return Title + " ," + Category 
-                    + " ," + MediaType + " " + PlayTime;
+            return Title + " ," + Category + " ," + MediaType + " " + PlayTime;
         }
 
     }

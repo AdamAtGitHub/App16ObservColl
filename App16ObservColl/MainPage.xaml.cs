@@ -6,6 +6,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.Data.Sqlite.Internal;
 using System.Collections.Generic;
 using System.Diagnostics;
+using App16ObservColl.Models;
 
 namespace App16ObservColl
 {
@@ -88,5 +89,13 @@ namespace App16ObservColl
             return entries;
         }
 
+        //private void btnRemoveSelectedItems(object sender, RoutedEventArgs e)
+        //{
+        //    //Replace Class with your object type
+        //    while (listViewOutput.SelectedItems.Count > 0)
+        //    {
+        //        .Remove((Content)listViewOutput.SelectedItem);
+        //    }
+        //}
     }
 }

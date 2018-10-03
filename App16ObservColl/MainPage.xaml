@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:m="using:App16ObservColl.Models"
-    xmlns:vm="using:App16ObservColl.ViewModels"
+    xmlns:vm="using:App16ObservColl.ViewModels"   
     mc:Ignorable="d"
     Height="640" Width="360"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -14,7 +14,6 @@
         <m:Content/>
     </Page.DataContext>
     <Page.Resources>
-        <vm:VM_Base x:Key="VM_Base"/>
         <vm:VM_Base_ObsColl x:Key="VM_Base_ObsColl"/>
     </Page.Resources>
     <Grid>
@@ -38,7 +37,7 @@
                      Height="60" Width="250"/>
             <TextBox x:Name="boxInputPlayTime" 
                      Header="Play Time"
-                     Text="{Binding PlayTime, Mode=TwoWay}"                  
+                     Text="{Binding PlayTime, Mode=TwoWay}"                      
                      Height="60" Width="250"/>
            
             <StackPanel Orientation="Horizontal">
@@ -54,11 +53,11 @@
                           CommandParameter="{Binding}"/>
                 <AppBarButton Icon="Remove"
                           Content="Remove"
-                          HorizontalAlignment="Right" Height="40"
+                          HorizontalAlignment="Right" Height="40"                            
                           Command="{Binding Path=Cmd_RemoveModPropsList,
-                            Source={StaticResource VM_Base}}"
-                          CommandParameter="{Binding Title}"/>
-              </StackPanel>
+                            Source={StaticResource VM_Base_ObsColl}}"
+                          CommandParameter="{Binding}"/>
+            </StackPanel>
             
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="SQLite" 
@@ -76,11 +75,13 @@
                           CommandParameter="{Binding Title}"
                               Margin="160 0 0 0"/>-->
             </StackPanel>
-            
-        <StackPanel>
-                <ListView x:Name="listViewOutput" 
+
+            <StackPanel  Height="180">
+                
+                <ListView x:Name="listViewOutput"
                   DataContext="{Binding Source={StaticResource VM_Base_ObsColl}}"
-                  ItemsSource="{Binding}">
+                 ItemsSource="{Binding}"
+                          SelectedItem="{Binding ObservableCollectionItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="70" Width="350" Margin="1 1" Background="Gray">
