@@ -46,12 +46,17 @@ namespace App16ObservColl.ViewModels
         //public ObservableCollection<Content> SelectedTitles =
         //  new ObservableCollection<Content>();
 
+       
+
         public VM_Base_ObsColl()
         {
             Cmd_ADDModelPropsList = new Cmd_ADDModelPropsList(this);
             Cmd_RemoveModPropsList = new Cmd_RemoveModPropsList(this);
 
-           
+            ObservableCollection<Content> contentReference = new ObservableCollection<Content>();
+            Content obj = new Content("Category", "Title", "Speech", "ForceTalk", false);
+           // Class1 obj = new Class1("Maria", 22203);
+
 
             if (DesignMode.DesignModeEnabled)
             {
@@ -59,17 +64,31 @@ namespace App16ObservColl.ViewModels
                 {
                     Add(new Content()
                     {
-                        Category = "Category " + 1+i,
-                        Title = "Title " + 1+i,
-                        MediaType = "Media Type " + 1+i,
-                        PlayTime = "8:00 AM " + 1 + i
+                        Category = "Category " + i,
+                        Title = "Title " + i,
+                        MediaType = "Media Type " + i,
+                        PlayTime = "8:00 AM " + i,
+                        RepeatsIsOn = false
                     });
-                }        
+                }
+                Remove(new Content()
+                {
+                    Category = "Category",
+                    Title = "Title ",
+                    MediaType = "Media Type ",
+                    PlayTime = "8:00 AM ",
+                    RepeatsIsOn = false
+                });
+                //ObservableCollectionItem = new Content()(
+                //     Category = "Category ",
+                //        Title = "Title ",
+                //        MediaType = "Media Type ",
+                //        PlayTime = "8:00 AM ",
+                //        RepeatsIsOn = false);
             }
         }
 
         private object observableCollectionItem;
-
         public object ObservableCollectionItem
         {
             get
@@ -85,19 +104,25 @@ namespace App16ObservColl.ViewModels
 
 
         public void ADDModelPropsList(Content content)
-        {     
-            Content c = new Content();
-            c.Category = content.Category;
-            c.Title = content.Title;
-            c.MediaType = content.MediaType;
-            c.PlayTime= content.PlayTime;
-            Add(c);
-            Debug.WriteLine(c);
+        {
+            ObservableCollection<Content> test = new ObservableCollection<Content>();
+            Content obj = new Content();
+
+            test.Add(obj);
+           
+            Debug.WriteLine(obj);
+
         }
 
-        public void RemoveModPropsList(Content c)
+        public void RemoveModPropsList(Content ObservableCollectionItem)
         {
-            Remove(c);
+            
+           // ObservableCollectionItem
+           // contentReference.Add(obj);
+           // contentReference.Remove(obj); //This works
+
+
+            //Remove(c);
             // ObservableCollection<Content> .observableCollectionItem);
             //RemoveAt(ObservableCollection).IndexOf(ObservableCollectionItem));
             //ObservableCollection<Content>.RemoveAt(ObservableCollection).IndexOf(ObservableCollectionItem));

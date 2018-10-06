@@ -5,9 +5,26 @@ namespace App16ObservColl.Models
 {
     public class Content : INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /////generated this constructot using Lightbulb
+        private bool repeatsIsOn;
+        private string v1;
+        private string v2;
+        private string v3;
+        private string v4;
+        private bool v5;
+
+        public Content(string v1, string v2, string v3, string v4, bool v5)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+            this.v4 = v4;
+            this.v5 = v5;
+        }
+        ////// ------------------------
+       
         public Content()
         {
             if (DesignMode.DesignModeEnabled)
@@ -16,30 +33,36 @@ namespace App16ObservColl.Models
                 Title = "Out the Door CheckList";
                 MediaType = "Speech";
                 PlayTime = "10:00 AM";
-                //PlaySet = "True";//Daily Routine-Weekday 
+                RepeatsIsOn = false;
             }
             else
             {
-                //Category = "";
-                //Title = "";
-                //MediaType = "";
-                //PlayTime = "";
-                ////PlaySet = "";
+
                 Category = "Human Fx";
                 Title = "Out the Door CheckList";
                 MediaType = "Speech";
                 PlayTime = "10:00 AM";
+                RepeatsIsOn = false;
             }
         }
 
+        public bool RepeatsIsOn
+        {
+            get => repeatsIsOn;
+            set
+            {
+                repeatsIsOn = value;
+                OnPropertyChanged("RepeatsIsOn");
+            }
+        }
+    
         private void OnPropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-
         #region Class/Model/Record Props & Fields
-        public int Id { get; set; }
+      //  public int Id { get; set; }
 
         private string category;
         public string Category
@@ -85,56 +108,46 @@ namespace App16ObservColl.Models
             }
         }
 
-        private string titleSet;
-        public string TitleSet
-        {
-            get => titleSet;
-            set
-            {
-                titleSet = value;
-                OnPropertyChanged("TitleSet");
-            }
-        }
+        //private string titleSet;
+        //public string TitleSet
+        //{
+        //    get => titleSet;
+        //    set
+        //    {
+        //        titleSet = value;
+        //        OnPropertyChanged("TitleSet");
+        //    }
+        //}
 
-        private string playSet;
-        public string PlaySet
-        {
-            get => playSet;
-            set
-            {
-                playSet = value;
-                OnPropertyChanged("PlaySet");
-            }
-        }
-
-        private bool repeatsIsOn;
-        public bool RepeatsIsOn
-        {
-            get => repeatsIsOn;
-            set
-            {
-                repeatsIsOn = value;
-                OnPropertyChanged("RepeatsIsOn");
-            }
-        }
+        //private string playSet;
+        //public string PlaySet
+        //{
+        //    get => playSet;
+        //    set
+        //    {
+        //        playSet = value;
+        //        OnPropertyChanged("PlaySet");
+        //    }
+        //}
+      
 
         #endregion
 
         #region Remaining Fields
-        public string TitleNo { get; set; }
+        //public string TitleNo { get; set; }
 
-        public string FileName { get; set; }
+        //public string FileName { get; set; }
 
-        public string Path { get; set; }
+        //public string Path { get; set; }
 
-        public string RepeatIntervalName { get; set; }
+        //public string RepeatIntervalName { get; set; }
 
-        public string MediaUses { get; set; }
+        //public string MediaUses { get; set; }
         #endregion
 
         public override string ToString()
         {
-            return Title + " ," + Category + " ," + MediaType + " " + PlayTime;
+            return Title + " ," + Category + " ," + MediaType + " " + PlayTime + " " + RepeatsIsOn;
         }
 
     }

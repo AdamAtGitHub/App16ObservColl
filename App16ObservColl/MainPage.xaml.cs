@@ -18,6 +18,7 @@ namespace App16ObservColl
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

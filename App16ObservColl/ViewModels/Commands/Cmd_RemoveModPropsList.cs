@@ -21,7 +21,7 @@ namespace App16ObservColl.ViewModels.Commands
             //{
             //    var s = parameter as String;
             //    s = s.Trim();
-            //    if (String.IsNullOrEmpty(s))
+            //    if (String.IsNullOrEmpty(s))   
             //        return false;
 
             //    return true;

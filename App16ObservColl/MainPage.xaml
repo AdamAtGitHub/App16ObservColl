@@ -39,32 +39,38 @@
                      Header="Play Time"
                      Text="{Binding PlayTime, Mode=TwoWay}"                      
                      Height="60" Width="250"/>
-           
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Lists"
+
+            <StackPanel Orientation="Horizontal" Margin="10,2,15,0">
+                <!--<TextBlock Text="Lists"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
-                           Margin="2 2"/>
+                           Margin="2 2"/>-->
                 <AppBarButton Icon="Add" 
-                          Content="Save All"
+                          Content="Save All" Margin="15 5 0 5"
                           HorizontalAlignment="Right" Height="40"
                           Command="{Binding Path=Cmd_ADDModelPropsList,
                                 Source={StaticResource VM_Base_ObsColl}}"
                           CommandParameter="{Binding}"/>
                 <AppBarButton Icon="Remove"
-                          Content="Remove"
+                          Content="Remove" Margin="0 5 35 0"
                           HorizontalAlignment="Right" Height="40"                            
                           Command="{Binding Path=Cmd_RemoveModPropsList,
                             Source={StaticResource VM_Base_ObsColl}}"
                           CommandParameter="{Binding}"/>
+                <ToggleSwitch Header="Repeats" 
+                              IsOn="{Binding RepeatsIsOn, Mode=TwoWay}"
+                          FontSize="14"
+                          HorizontalAlignment="Right" 
+                          Height="52"
+                          Margin="0,0,0,0" VerticalAlignment="Center"/>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="SQLite" 
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
-                           Margin="2 2"/>
-                    <AppBarButton Icon="Save" 
+                           Margin="35 2"/>
+                <AppBarButton Icon="Save" 
                           Content="Save All"
                           HorizontalAlignment="Right"
                           Click="AppBarBtnAddText_Click"/>
@@ -77,7 +83,7 @@
             </StackPanel>
 
             <StackPanel  Height="180">
-                
+
                 <ListView x:Name="listViewOutput"
                   DataContext="{Binding Source={StaticResource VM_Base_ObsColl}}"
                  ItemsSource="{Binding}"
@@ -115,8 +121,8 @@
                                            Margin="2 2"/>
                             </Grid>
                         </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </StackPanel>
     </Grid>
